@@ -6,7 +6,22 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/HomeView.vue')
+      component: () => import('../components/LandingVIew.vue')
+    },
+    {
+      path: '/ask',
+      name: 'ask',
+      component: () => import('../components/AskQuestion.vue')
+    },
+    {
+      path: '/apply',
+      name: 'apply',
+      component: () => import('../components/ApplyForm.vue')
+    },
+    {
+      path: '/entry',
+      name: 'entry',
+      component: () => import('../components/EntryRequirements.vue')
     },
     { path: '/:pathMatch(.*)*', name: 'notFound', component: () => import('@/views/NotFound.vue') }
   ]
