@@ -95,6 +95,14 @@
       </div>
     </div>
   </div>
+  <div class="belowbox">
+    <div class="review flex">
+      <img class="hero-profile-img" src="../assets/blacky.jpeg" alt="" />
+      <span class="description ml-5">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -238,10 +246,41 @@ video {
   background-color: #eeeeee;
   display: flex;
 }
+.belowbox {
+  background-color: #b1c5d4;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  padding: 20px;
+}
+
+.review-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.review-card img {
+  width: 100px; /* Increased size */
+  height: 200px; /* Increased size */
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.description {
+  flex: 1;
+  font-size: 18px; /* Increased font size */
+}
+
 /* BEGIN CARD DESIGN */
 .hero {
   display: flex;
   position: relative;
+  align-items: center;
   width: 400px;
   min-width: 400px;
   height: 400px;

@@ -175,7 +175,7 @@
 
   <div class="box">
     <div class="first hero">
-      <img class="hero-profile-img" src="../assets/cool.jpeg" alt="" />
+      <img class="hero-profile-img" src="../assets/girl.jpeg" alt="" />
       <div class="hero-description-bk"></div>
       <div class="hero-logo">
         <img src="../assets/sust.png" style="background: black" alt="" />
@@ -191,7 +191,7 @@
       </div>
     </div>
     <div class="first hero">
-      <img class="hero-profile-img" src="../assets/cool.jpeg" alt="" />
+      <img class="hero-profile-img" src="../assets/blacky.jpeg" alt="" />
       <div class="hero-description-bk"></div>
       <div class="hero-logo">
         <img src="../assets/sust.png" style="background: black" alt="" />
