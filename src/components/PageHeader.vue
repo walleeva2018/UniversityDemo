@@ -25,7 +25,7 @@
             <a href="#">How To Apply</a>
             <ul>
               <li>
-                <a href="/entry">Entry Requirments</a>
+                <a @click="gotoEntry">Entry Requirments</a>
               </li>
               <li>
                 <a href="">Fees</a>
@@ -81,6 +81,9 @@ function gotoAskQuestion() {
 }
 function gotoApplyForm() {
   router.push('apply');
+}
+function gotoEntry() {
+  router.push('entry');
 }
 </script>
 
