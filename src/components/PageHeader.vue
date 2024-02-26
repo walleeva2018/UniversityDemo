@@ -168,4 +168,47 @@ a:hover {
     width: 100px; /* Adjust the width for smaller screens */
   }
 }
+
+/* Add this media query at the end of your existing CSS */
+/* Add this media query at the end of your existing CSS */
+@media (max-width: 768px) {
+  .navbar {
+    position: static; /* Change position to static for smaller screens */
+    display: flex; /* Display navbar items as flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .navbar li {
+    width: 100%; /* Make each list item take up the full width */
+    float: none;
+    text-align: center; /* Center text within list items */
+    background-color: #a3a1a1;
+  }
+
+  .navbar li ul {
+    display: none; /* Hide dropdown menus by default */
+  }
+
+  .navbar li:hover ul {
+    display: block; /* Show dropdown menus on hover */
+  }
+
+  .navbar li ul li {
+    display: block; /* Display dropdown items as block */
+  }
+
+  .navbar a {
+    border-left: none; /* Remove border on left side */
+    border-right: none; /* Remove border on right side */
+    border-top: 1px solid #c9d4d8; /* Add top border between items */
+    border-bottom: none; /* Remove bottom border */
+    padding: 12px 0; /* Adjust padding */
+  }
+
+  .right-item {
+    float: none; /* Remove float */
+    width: 100%; /* Make the buttons take up full width */
+  }
+}
 </style>
