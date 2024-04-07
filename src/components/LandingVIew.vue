@@ -1,6 +1,6 @@
 <template>
   <div class="bg-video-wrap">
-    <video src="../assets/rain.mp4" loop muted autoplay></video>
+    <video src="../assets/uni.mp4" loop muted autoplay></video>
     <div class="overlay"></div>
     <div class="over-video">
       <div class="carousel">
@@ -10,10 +10,12 @@
           class="carousel-item"
           v-bind:class="{ active: index === activeIndex }"
         >
-          <h1 style="font-size: 28px; color: #761e67">
-            {{ item.content }}
+          <h1 style="font-size: 28px; color: #ffffff">
+            <B>{{ item.content }}</B>
           </h1>
-          <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-bold right-item">
+          <button
+            class="custom-button bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-bold right-item"
+          >
             {{ item.buttonText }}
           </button>
         </div>
@@ -32,69 +34,12 @@
     </div>
   </div>
   <div class="flex">
-    <Card style="width: 25rem; overflow: hidden" class="card">
-      <template #title>A world top 100 university</template>
-      <template #subtitle>QS World University Rankings 2024</template>
-    </Card>
-    <Card style="width: 25rem; overflow: hidden" class="card">
-      <template #title>Ranked 7th in the UK</template>
-      <template #subtitle>The Times and The Sunday Times Good University Guide 2024</template>
-    </Card>
-    <Card style="width: 25rem; overflow: hidden" class="card">
-      <template #title>Over 90% of subjects ranked in the UK top 10</template>
-      <template #subtitle>Complete University Guide 2023</template>
-    </Card>
+    <InfoCard />
   </div>
   <div class="box">
-    <div class="first hero">
-      <img class="hero-profile-img" src="../assets/cool.jpeg" alt="" />
-      <div class="hero-description-bk"></div>
-      <div class="hero-logo">
-        <img src="../assets/sust.png" style="background: black" alt="" />
-      </div>
-      <div class="hero-description">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="hero-date">
-        <p>20.02.2019</p>
-      </div>
-      <div class="hero-btn">
-        <a href="#">Learn More</a>
-      </div>
-    </div>
-    <div class="first hero">
-      <img class="hero-profile-img" src="../assets/download.jpeg" alt="" />
-      <div class="hero-description-bk"></div>
-      <div class="hero-logo">
-        <img src="../assets/sust.png" style="background: black" alt="" />
-      </div>
-      <div class="hero-description">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="hero-date">
-        <p>20.02.2019</p>
-      </div>
-      <div class="hero-btn">
-        <a href="#">Learn More</a>
-      </div>
-    </div>
-    <div class="first hero">
-      <img class="hero-profile-img" src="../assets/download.jpeg" alt="" />
-      <div class="hero-description-bk"></div>
-      <div class="hero-logo">
-        <img src="../assets/sust.png" style="background: black" alt="" />
-      </div>
-      <div class="hero-description">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="hero-date">
-        <p>20.02.2019</p>
-      </div>
-      <div class="hero-btn">
-        <a href="#">Learn More</a>
-      </div>
-    </div>
+    <LandingPageCard />
   </div>
+
   <div class="belowbox">
     <div class="review flex">
       <img class="hero-profile-img" src="../assets/blacky.jpeg" alt="" />
@@ -106,8 +51,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Card from 'primevue/card';
+import { ref, onMounted, onUnmounted } from 'vue';
+import LandingPageCard from './LandingPageCard.vue';
+import InfoCard from './InfoCard.vue';
 const carouselItems = ref([
   { content: 'CONFIRM YOUR PLACE NOW TO PAY 2023/24 TUITION FEES', buttonText: 'Find Out More' },
   { content: 'PREPARE FOR SUCCESS WITH OUR FREE ONLINE PREPARATION COURSE', buttonText: 'More Details' },
@@ -126,6 +72,16 @@ const prevSlide = () => {
 const goToSlide = (index) => {
   activeIndex.value = index;
 };
+
+let intervalId;
+
+onMounted(() => {
+  intervalId = setInterval(nextSlide, 3000); // Change slide every 5 seconds
+});
+
+onUnmounted(() => {
+  clearInterval(intervalId);
+});
 </script>
 <style scoped>
 .bg-video-wrap {
@@ -135,7 +91,7 @@ const goToSlide = (index) => {
   height: 60vh;
 }
 
-video {
+.video {
   min-width: 100%;
   min-height: 100vh;
 }
@@ -162,7 +118,7 @@ video {
 
 .carousel {
   position: relative;
-  width: 80%; /* Adjust carousel width */
+  width: 80%;
 }
 
 .carousel-item {
@@ -178,6 +134,7 @@ video {
   max-width: 100%;
   height: auto;
 }
+
 .dots {
   display: flex;
   justify-content: center;
@@ -196,12 +153,13 @@ video {
 .dot.active {
   background-color: #333;
 }
+
 .prev,
 .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #794171;
   border: none;
   color: black;
   font-size: 24px;
@@ -217,23 +175,47 @@ video {
 .next {
   right: 10px;
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .bg-video-wrap {
+    height: 40vh; /* Adjust video height for smaller screens */
+  }
+
+  .video {
+    min-height: 40vh; /* Adjust video height for smaller screens */
+  }
+
+  .carousel {
+    width: 90%; /* Adjust carousel width for smaller screens */
+  }
+
+  .carousel-item h1 {
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .carousel-item button {
+    font-size: 12px; /* Decrease button font size for smaller screens */
+    padding: 8px 12px; /* Adjust button padding for smaller screens */
+  }
+
+  .prev,
+  .next {
+    font-size: 18px; /* Decrease arrow font size for smaller screens */
+    padding: 8px; /* Adjust arrow padding for smaller screens */
+  }
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
 .flex {
   display: flex;
 }
-
-.card {
-  margin-left: 140px; /* Center the card */
-  background-color: #ebe6b0; /* Default background color */
-}
-
-.card:nth-child(2) {
-  background-color: #dcdcdc; /* Different background color for the second card */
-}
-
-.card:last-child {
-  background-color: #cdb5cb; /* Different background color for the third card */
-}
-
 .button {
   background-color: #007bff; /* Default button color */
   color: white;
@@ -384,5 +366,11 @@ video {
     width: 90%; /* Adjust hero card width */
     min-width: auto; /* Reset min-width */
   }
+}
+.custom-button {
+  background-color: #761e67;
+}
+.custom-button:hover {
+  background-color: #5a174e;
 }
 </style>

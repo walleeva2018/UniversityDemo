@@ -1,12 +1,24 @@
 <template>
-  <header class="bg-gray-800 text-white py-2 px-6">
+  <header class="bg-white py-2 px-6">
     <div class="flex flex-row justify-between items-center h-full">
       <div class="flex items-center gap-4">
-        <a href="/"><img src="../assets/sust.png" width="80" height="50" /> </a>
+        <a href="/"><img src="../assets/logotasdid.png" width="80" height="50" /> </a>
       </div>
 
       <div id="wrap">
-        <ul class="navbar">
+        <!-- Show menu toggle icon only on small screens -->
+        <div class="md:hidden relative show-icon" @click="toggleMenu">
+          <i v-if="isMenu" class="pi pi-times" style="font-size: 2.5rem"></i>
+          <i v-else class="pi pi-align-justify" style="font-size: 2.5rem"></i>
+        </div>
+
+        <!-- Navbar menu -->
+        <ul
+          v-if="isMenu || screenWidth > 1200"
+          class="navbar"
+          @click="toggleDropdown"
+          @mouseover="toggleDropdown"
+        >
           <li>
             <a href="#">International Study Center </a>
             <ul>
@@ -54,6 +66,8 @@
           </li>
         </ul>
       </div>
+
+      <!-- Buttons for large screens -->
       <div class="justify-between flex gap-3">
         <button
           @click="gotoApplyForm"
@@ -74,7 +88,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+const isMenu = ref(false);
 const router = useRouter();
 function gotoAskQuestion() {
   router.push('ask');
@@ -85,6 +101,30 @@ function gotoApplyForm() {
 function gotoEntry() {
   router.push('entry');
 }
+
+const isDropdownVisible = ref(false);
+const screenWidth = ref(window.innerWidth);
+
+const toggleDropdown = () => {
+  isDropdownVisible.value = !isDropdownVisible.value;
+};
+
+function toggleMenu() {
+  isMenu.value = !isMenu.value;
+}
+
+// Update screenWidth on window resize
+const updateScreenWidth = () => {
+  screenWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener('resize', updateScreenWidth);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateScreenWidth);
+});
 </script>
 
 <style scoped>
@@ -122,13 +162,13 @@ function gotoEntry() {
   padding: 18px 0;
   border-left: 1px solid #ccc9c9;
   text-decoration: none;
-  color: white;
+  color: #7a357d; /* Set text color to #7A357D */
   display: block;
   z-index: 2;
 }
 .navbar li:hover,
 a:hover {
-  background-color: #444444;
+  background-color: grey;
   z-index: 2;
 }
 .navbar li ul {
@@ -143,7 +183,7 @@ a:hover {
   z-index: 2;
 }
 .navbar li ul li {
-  background-color: #444444;
+  background-color: white;
   z-index: 2;
 }
 .navbar li ul li a {
@@ -163,15 +203,11 @@ a:hover {
   width: 200px;
   z-index: 2;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .right-item {
     width: 100px; /* Adjust the width for smaller screens */
   }
-}
 
-/* Add this media query at the end of your existing CSS */
-/* Add this media query at the end of your existing CSS */
-@media (max-width: 768px) {
   .navbar {
     position: static; /* Change position to static for smaller screens */
     display: flex; /* Display navbar items as flexbox */
@@ -190,8 +226,8 @@ a:hover {
     display: none; /* Hide dropdown menus by default */
   }
 
-  .navbar li:hover ul {
-    display: block; /* Show dropdown menus on hover */
+  .navbar li.active ul {
+    display: block; /* Show dropdown menus when the parent li is active */
   }
 
   .navbar li ul li {
@@ -204,11 +240,15 @@ a:hover {
     border-top: 1px solid #c9d4d8; /* Add top border between items */
     border-bottom: none; /* Remove bottom border */
     padding: 12px 0; /* Adjust padding */
+    color: #7a357d; /* Set text color to #7A357D */
   }
 
   .right-item {
     float: none; /* Remove float */
     width: 100%; /* Make the buttons take up full width */
+  }
+  .show-icon {
+    display: block;
   }
 }
 </style>
