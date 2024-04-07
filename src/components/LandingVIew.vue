@@ -41,18 +41,14 @@
   </div>
 
   <div class="belowbox">
-    <div class="review flex">
-      <img class="hero-profile-img" src="../assets/blacky.jpeg" alt="" />
-      <span class="description ml-5">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </span>
-    </div>
+    <ReviewView />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import LandingPageCard from './LandingPageCard.vue';
+import ReviewView from './ReviewView.vue';
 import InfoCard from './InfoCard.vue';
 const carouselItems = ref([
   { content: 'CONFIRM YOUR PLACE NOW TO PAY 2023/24 TUITION FEES', buttonText: 'Find Out More' },
