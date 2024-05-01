@@ -54,7 +54,7 @@
                 <a href="/masters">Master</a>
               </li>
               <li>
-                <a href="">Bachelor Degree</a>
+                <a href="/bachelor">Bachelor Degree</a>
               </li>
               <li>
                 <a href="">Angular</a>

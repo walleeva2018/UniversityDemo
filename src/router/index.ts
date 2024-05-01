@@ -28,6 +28,12 @@ const router = createRouter({
       name: 'masters',
       component: () => import('../components/MasterView.vue')
     },
+    {
+      path: '/bachelor',
+      name: 'bachelor',
+      component: () => import('../components/BachelorView.vue')
+    },
+
     { path: '/:pathMatch(.*)*', name: 'notFound', component: () => import('@/views/NotFound.vue') }
   ]
 });

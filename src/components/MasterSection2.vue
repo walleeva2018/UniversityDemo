@@ -10,7 +10,6 @@
     </div>
   </div>
 </template>
-
 <style scoped>
 .section2 {
   width: calc(100% - 40px);
