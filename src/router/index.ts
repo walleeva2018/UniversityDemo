@@ -16,12 +16,17 @@ const router = createRouter({
     {
       path: '/apply',
       name: 'apply',
-      component: () => import('../components/ApplyForm.vue')
+      component: () => import('../components/ApplyEmail.vue')
     },
     {
       path: '/entry',
       name: 'entry',
       component: () => import('../components/EntryRequirements.vue')
+    },
+    {
+      path: '/masters',
+      name: 'masters',
+      component: () => import('../components/MasterView.vue')
     },
     { path: '/:pathMatch(.*)*', name: 'notFound', component: () => import('@/views/NotFound.vue') }
   ]

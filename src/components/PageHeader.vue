@@ -51,7 +51,7 @@
             <a href="#">Programmes</a>
             <ul>
               <li>
-                <a href="">Master</a>
+                <a href="/masters">Master</a>
               </li>
               <li>
                 <a href="">Bachelor Degree</a>

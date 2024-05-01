@@ -1,7 +1,11 @@
 <template>
-  <footer class="bg-gray-800 text-white py-4">
+  <footer style="background-color: #761e67" class="text-white py-4">
     <!-- New box with buttons and text -->
-    <div class="bg-gray-700 py-2 text-center mb-5">
+    <div
+      style="background-color: #006388"
+      class="py-2 text-center mb-5"
+      v-if="!route.fullPath.includes('/apply')"
+    >
       <h2>READY TO JOIN US?</h2>
       <p class="text-gray-300 text-sm mt-2 mb-2">
         Our student enrolment advisors are here to help with your application and answer any questions you
@@ -54,8 +58,9 @@
   </footer>
 </template>
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 const router = useRouter();
+const route = useRoute();
 function gotoAskQuestion() {
   router.push('ask');
 }
