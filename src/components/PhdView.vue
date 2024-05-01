@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/students_cool.jpg" style="max-height: 500px; width: 100%" />
+    <img src="../assets/phd.jpg" style="max-height: 500px; width: 100%" />
     <div class="breadcrumbs">
       <!-- Add your breadcrumb content here -->
       <a href="/"> HOME / </a>
@@ -8,9 +8,9 @@
     </div>
     <div class="container">
       <!-- Section 1 -->
-      <BachelorSection1 />
+      <PhdSection1 />
       <!-- Section 2 -->
-      <BachelorSection2 />
+      <PhdSection2 />
     </div>
     <div class="box">
       <LandingPageCard />
@@ -20,8 +20,8 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import BachelorSection1 from '../components/BachelorComponents/BachelorSection1.vue';
-import BachelorSection2 from '../components/BachelorComponents/BachelorSection2.vue';
+import PhdSection1 from '../components/PhdComponents/PhdSection1.vue';
+import PhdSection2 from '../components/PhdComponents/PhdSection2.vue';
 import LandingPageCard from '../components/LandingPageCard.vue';
 const route = useRoute();
 const routePath = route.path; // Get the current route path

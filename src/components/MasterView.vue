@@ -51,8 +51,8 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import MasterView1 from '../components/MasterSection1.vue';
-import MasterView2 from '../components/MasterSection2.vue';
+import MasterView1 from '../components/MasterComponents/MasterSection1.vue';
+import MasterView2 from '../components/MasterComponents/MasterSection2.vue';
 import LandingPageCard from '../components/LandingPageCard.vue';
 const route = useRoute();
 const routePath = route.path; // Get the current route path

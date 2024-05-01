@@ -57,10 +57,7 @@
                 <a href="/bachelor">Bachelor Degree</a>
               </li>
               <li>
-                <a href="">Angular</a>
-              </li>
-              <li>
-                <a href="">Subjects</a>
+                <a href="/phd">PhD</a>
               </li>
             </ul>
           </li>
