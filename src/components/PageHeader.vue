@@ -51,13 +51,13 @@
             <a href="#">Programmes</a>
             <ul>
               <li>
-                <a href="/masters">Master</a>
+                <a @click="gotoThere('masters')">Master</a>
               </li>
               <li>
-                <a href="/bachelor">Bachelor Degree</a>
+                <a @click="gotoThere('bachelor')">Bachelor Degree</a>
               </li>
               <li>
-                <a href="/phd">PhD</a>
+                <a @click="gotoThere('phd')">PhD</a>
               </li>
             </ul>
           </li>
@@ -97,6 +97,9 @@ function gotoApplyForm() {
 }
 function gotoEntry() {
   router.push('entry');
+}
+function gotoThere(dest: string) {
+  router.push(dest);
 }
 
 const isDropdownVisible = ref(false);
