@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import('../components/AskQuestion.vue')
     },
     {
+      path: '/masters',
+      name: 'masters',
+      component: () => import('../components/MasterView.vue')
+    },
+    {
       path: '/apply',
       name: 'apply',
       component: () => import('../components/ApplyEmail.vue')
@@ -22,11 +27,6 @@ const router = createRouter({
       path: '/entry',
       name: 'entry',
       component: () => import('../components/EntryRequirements.vue')
-    },
-    {
-      path: '/masters',
-      name: 'masters',
-      component: () => import('../components/MasterView.vue')
     },
     {
       path: '/bachelor',
