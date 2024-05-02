@@ -25,16 +25,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      universityName: 'Preston University',
-      universityDescription:
-        'Welcome to Preston University, a premier institution dedicated to academic excellence, innovation, and holistic development. At [University Name], we foster a vibrant and inclusive learning community where students are empowered to explore their passions, challenge assumptions, and make meaningful contributions to society. Our diverse range of programs, world-class faculty, state-of-the-art facilities, and vibrant campus life create an enriching environment for intellectual growth and personal transformation. Whether you are pursuing undergraduate, graduate, or professional studies, Preston University is committed to nurturing your potential and preparing you to thrive in a rapidly evolving world'
-    };
-  }
-};
+<script setup lang="ts">
+const universityName = 'Preston University';
+const universityDescription = `
+  Welcome to Preston University, a premier institution dedicated to academic excellence, innovation, and holistic development. At [University Name], we foster a vibrant and inclusive learning community where students are empowered to explore their passions, challenge assumptions, and make meaningful contributions to society. Our diverse range of programs, world-class faculty, state-of-the-art facilities, and vibrant campus life create an enriching environment for intellectual growth and personal transformation. Whether you are pursuing undergraduate, graduate, or professional studies, Preston University is committed to nurturing your potential and preparing you to thrive in a rapidly evolving world
+`;
 </script>
 
 <style scoped>
