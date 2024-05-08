@@ -2,8 +2,8 @@
   <div class="section2">
     <!-- Call to Action Buttons -->
     <div class="buttons-container">
-      <button class="button apply-button">Apply Now</button>
-      <button class="button question-button">Ask A Question</button>
+      <button class="button apply-button" @click="router.push('apply')">Apply Now</button>
+      <button class="button question-button" @click="router.push('ask')">Ask A Question</button>
     </div>
 
     <!-- Most Demanding Course Section -->
@@ -24,7 +24,10 @@
     </div>
   </div>
 </template>
-
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter();
+</script>
 <style scoped>
 .section2 {
   width: calc(100% - 40px);

@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/croped_cute.jpg" style="max-height: 500px; width: 1900px" />
+  <img src="../assets/entry.jpg" style="max-height: 500px; width: 1900px" />
   <div class="breadcrumbs">
     <!-- Add your breadcrumb content here -->
     <a href="/"> HOME / </a>
@@ -7,16 +7,16 @@
   </div>
   <div class="container">
     <!-- Section 1 -->
-    <AskSection1 />
+    <EntrySection1 />
     <!-- Section 2 -->
-    <AskSection2 />
+    <EntrySection2 />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-import AskSection1 from './AskSection1.vue';
-import AskSection2 from './AskSection2.vue';
+import EntrySection1 from './EntryComponents/EntrySection1.vue';
+import EntrySection2 from './EntryComponents/EntrySection2.vue';
 const route = useRoute();
 const routePath = route.path; // Get the current route path
 const pathSegments = routePath.split('/').filter((segment) => segment !== ''); // Split the path by '/' and remove empty segments

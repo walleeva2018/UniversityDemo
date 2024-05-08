@@ -1,13 +1,13 @@
 <template>
   <div class="cards-container">
-    <Card class="card-item">
+    <Card class="card-item" @click="gotoThere('virtual')">
       <template #header>
         <img alt="user header" src="../assets//students.jpg" style="width: 100%" />
       </template>
-      <template #title>International Foundation Year</template>
+      <template #title>See Our Student Cultures</template>
       <template #subtitle
-        >Develop your English language and academic subject skills with our three-term programme and progress
-        to your chosen undergraduate degree at the top-ranking Durham University.</template
+        >Prieston University is Full of Diversity. Here we host several competitive , cultural and sports
+        events. Join us to explore all of them</template
       >
 
       <template #footer>
@@ -17,7 +17,7 @@
       </template>
     </Card>
 
-    <Card class="card-item">
+    <Card class="card-item" @click="gotoThere('masters')">
       <template #header>
         <img alt="user header" src="../assets//master.jpg" style="width: 100%" />
       </template>
@@ -34,14 +34,14 @@
       </template>
     </Card>
 
-    <Card class="card-item">
+    <Card class="card-item" @click="gotoThere('entry')">
       <template #header>
         <img alt="user header" src="../assets//girl.jpeg" style="width: 100%" />
       </template>
-      <template #title>English preparation</template>
+      <template #title>Entry preparation</template>
       <template #subtitle
-        >Our Online English Language Preparation courses develop your English skills in order for you to
-        succeed on both your chosen pathway programme and your university degree.</template
+        >Our Online Entry Preparation courses develop your skills in order for you to succeed on both your
+        chosen pathway programme and your university degree.</template
       >
 
       <template #footer>
@@ -55,6 +55,12 @@
 
 <script setup lang="ts">
 import Card from 'primevue/card';
+import { useRouter } from 'vue-router';
+
+function gotoThere(dest: string) {
+  router.push(dest);
+}
+const router = useRouter();
 </script>
 
 <style scoped>

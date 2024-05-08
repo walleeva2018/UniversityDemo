@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/croped_cute.jpg" style="max-height: 500px; width: 1900px" />
+  <img src="../assets/ask.jpg" style="max-height: 500px; width: 1900px" />
   <div class="breadcrumbs">
     <!-- Add your breadcrumb content here -->
     <a href="/"> HOME / </a>

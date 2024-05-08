@@ -38,8 +38,33 @@ const router = createRouter({
       name: 'phd',
       component: () => import('../components/PhdView.vue')
     },
+    {
+      path: '/fees',
+      name: 'fees',
+      component: () => import('../components/FeeView.vue')
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => import('../components/TermView.vue')
+    },
+    {
+      path: '/studentlife',
+      name: 'studentlife',
+      component: () => import('../components/StudentLifeView.vue')
+    },
+    {
+      path: '/career',
+      name: 'career',
+      component: () => import('../components/CareerView.vue')
+    },
+    {
+      path: '/virtual',
+      name: 'virtual',
+      component: () => import('../components/VirtualEventView.vue')
+    },
 
-    { path: '/:pathMatch(.*)*', name: 'notFound', component: () => import('@/views/NotFound.vue') }
+    { path: '/:pathMatch(.*)*', redirect: { name: 'home' } }
   ]
 });
 

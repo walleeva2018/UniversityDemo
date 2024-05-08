@@ -43,15 +43,15 @@
       </div>
       <div class="text-center md:text-right">
         <p>
-          <a href="#" class="text-gray-400 hover:text-white">Prospectus</a>
+          <span class="text-gray-400 hover:text-white" @click="router.push('virtual')">Events</span>
           <span class="text-gray-400"> | </span>
-          <a href="#" class="text-gray-400 hover:text-white">Blog</a>
+          <span class="text-gray-400 hover:text-white" @click="router.push('masters')">Masters</span>
           <span class="text-gray-400"> | </span>
-          <a href="#" class="text-gray-400 hover:text-white">Contact Us</a>
+          <span class="text-gray-400 hover:text-white" @click="router.push('entry')">Entry </span>
           <span class="text-gray-400"> | </span>
-          <a href="#" class="text-gray-400 hover:text-white">Terms & Condition </a>
+          <span class="text-gray-400 hover:text-white" @click="router.push('fees')">Fees </span>
           <span class="text-gray-400"> | </span>
-          <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+          <span class="text-gray-400 hover:text-white" @click="router.push('apply')">Apply </span>
         </p>
       </div>
     </div>

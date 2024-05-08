@@ -1,8 +1,12 @@
 <template>
   <div class="section2">
     <div class="buttons-container">
-      <button class="button" style="background-color: #008dce">Apply Now</button>
-      <button class="button" style="background-color: #761e67">Ask A Question</button>
+      <button class="button" style="background-color: #008dce" @click="router.push('apply')">
+        Apply Now
+      </button>
+      <button class="button" style="background-color: #761e67" @click="router.push('ask')">
+        Ask A Question
+      </button>
     </div>
     <div class="pass-rate-box mt-8">
       <h2 class="pass-rate-title">97% Pass Rate</h2>
@@ -12,6 +16,10 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter();
+</script>
 <style scoped>
 .section2 {
   width: calc(100% - 40px);

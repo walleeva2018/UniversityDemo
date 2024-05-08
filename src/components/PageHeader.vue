@@ -2,7 +2,7 @@
   <header class="bg-white py-2 px-6">
     <div class="flex flex-row justify-between items-center h-full">
       <div class="flex items-center gap-4">
-        <a href="/"><img src="../assets/logotasdid.png" width="80" height="50" /> </a>
+        <a href="/"><img src="../assets/logo.png" width="180" height="120" /> </a>
       </div>
 
       <div id="wrap">
@@ -23,13 +23,13 @@
             <a href="#">International Study Center </a>
             <ul>
               <li>
-                <a href="">Student Life</a>
+                <a @click="gotoThere('studentlife')">Student Life</a>
               </li>
               <li>
-                <a href="">Careers</a>
+                <a @click="gotoThere('career')">Careers</a>
               </li>
               <li>
-                <a href="">Virtual Events</a>
+                <a @click="gotoThere('virtual')">Virtual Events</a>
               </li>
             </ul>
           </li>
@@ -37,13 +37,13 @@
             <a href="#">How To Apply</a>
             <ul>
               <li>
-                <a @click="gotoEntry">Entry Requirments</a>
+                <a @click="gotoThere('entry')">Entry Requirments</a>
               </li>
               <li>
-                <a href="">Fees</a>
+                <a @click="gotoThere('fees')">Fees</a>
               </li>
               <li>
-                <a href="">Term Dates</a>
+                <a @click="gotoThere('terms')">Term Dates</a>
               </li>
             </ul>
           </li>
