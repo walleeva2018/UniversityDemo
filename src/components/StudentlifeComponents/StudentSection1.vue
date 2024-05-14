@@ -26,7 +26,7 @@
           Prieston!
         </div>
       </div>
-      <img src="../../assets/croped_cute.jpg" alt="Picture 1" />
+      <img class="imageShort" src="../../assets/croped_cute.jpg" alt="Picture 1" />
       <div class="accordion-item">
         <input type="checkbox" id="accordion2" />
         <label for="accordion2" class="accordion-item-title"
@@ -38,7 +38,7 @@
           opportunities for students to explore and embrace different cultures while studying at Prieston.
         </div>
       </div>
-      <img src="../../assets/master.jpg" alt="Picture 2" />
+      <img class="imageShort" src="../../assets/master.jpg" alt="Picture 2" />
 
       <!-- Add more accordion items as needed -->
     </div>
@@ -175,6 +175,9 @@ body {
   }
   .picture {
     display: none;
+  }
+  .imageShort {
+    width: 80%;
   }
 }
 </style>

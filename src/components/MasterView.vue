@@ -81,7 +81,7 @@ const pathSegments = routePath.split('/').filter((segment) => segment !== ''); /
 
 @media (max-width: 768px) {
   .section {
-    width: calc(100% - 40px); /* Full width on small screens */
+    width: 100%;
     margin-left: 4px;
   }
 }

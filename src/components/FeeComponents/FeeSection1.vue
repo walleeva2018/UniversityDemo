@@ -191,5 +191,14 @@
   .accordion h1 {
     font-size: 22px;
   }
+  .programs-table {
+    width: max-content; /* Adjust width for horizontal scrolling */
+    border-collapse: collapse;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  .section1 {
+    width: calc(100% - 40px);
+    overflow-x: auto;
+  }
 }
 </style>

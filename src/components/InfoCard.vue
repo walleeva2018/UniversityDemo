@@ -30,13 +30,13 @@ import Card from 'primevue/card';
 }
 @media (max-width: 1200px) {
   .card {
-    margin-left: 4rem;
+    width: 100%;
   }
   .bard {
-    margin-left: 4rem;
+    width: 100%;
   }
   .tard {
-    margin-left: 4rem;
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {

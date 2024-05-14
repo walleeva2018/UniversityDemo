@@ -180,6 +180,7 @@ onUnmounted(() => {
 
   .video {
     min-height: 40vh; /* Adjust video height for smaller screens */
+    width: 100%;
   }
 
   .carousel {
@@ -355,11 +356,12 @@ onUnmounted(() => {
   .box {
     flex-direction: column; /* Stack the hero cards vertically */
     align-items: center; /* Center hero cards horizontally */
+    width: 100%;
   }
 
   .hero {
     margin-left: 0; /* Remove margin for hero cards */
-    width: 90%; /* Adjust hero card width */
+    width: 100%; /* Adjust hero card width */
     min-width: auto; /* Reset min-width */
   }
 }

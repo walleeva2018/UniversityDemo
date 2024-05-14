@@ -99,7 +99,7 @@ const router = useRouter();
 @media (max-width: 1200px) {
   .cards-container {
     flex-direction: column; /* Stack cards vertically on smaller screens */
-    margin-left: 2rem;
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {

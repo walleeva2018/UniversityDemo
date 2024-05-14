@@ -79,4 +79,9 @@
 .why-study-list li {
   margin-bottom: 10px;
 }
+@media screen and (max-width: 767px) {
+  .section1 {
+    width: 100%;
+  }
+}
 </style>

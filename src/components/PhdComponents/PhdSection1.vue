@@ -192,5 +192,8 @@
   .accordion h1 {
     font-size: 22px;
   }
+  .section1 {
+    width: 100%;
+  }
 }
 </style>
