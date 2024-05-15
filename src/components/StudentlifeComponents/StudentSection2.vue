@@ -2,7 +2,7 @@
   <div class="section2">
     <h1 style="font-size: 40px; color: #761e67">Student Life</h1>
 
-    <img src="../../assets/beauty.jpg" class="mt-8" />
+    <img src="../../assets/male_review.jpg" class="mt-8" />
     <div class="mt-8">
       <h2 class="section-title" style="font-size: 20px"><B>Experience Vibrant Student Life</B></h2>
       <div class="content">

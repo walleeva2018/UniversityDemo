@@ -2,7 +2,7 @@
   <div class="cards-container">
     <Card class="card-item" @click="gotoThere('virtual')">
       <template #header>
-        <img alt="user header" src="../assets//students.jpg" style="width: 100%" />
+        <img alt="user header" src="../assets/male_wide.jpg" style="width: 100%" />
       </template>
       <template #title>See Our Student Cultures</template>
       <template #subtitle
@@ -36,7 +36,7 @@
 
     <Card class="card-item" @click="gotoThere('entry')">
       <template #header>
-        <img alt="user header" src="../assets//girl.jpeg" style="width: 100%" />
+        <img alt="user header" src="../assets/black_wide.jpg" style="width: 100%" />
       </template>
       <template #title>Entry preparation</template>
       <template #subtitle

@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <div class="relative">
-      <img class="hero-profile-img" src="../assets/beauty.jpg" alt="" />
+      <img class="hero-profile-img" src="../assets/male_review.jpg" alt="" />
       <div class="quotation-icon"><i class="pi pi-quote p-text-secondary"></i></div>
     </div>
     <div class="description ml-5">

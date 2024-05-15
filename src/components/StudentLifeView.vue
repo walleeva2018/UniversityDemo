@@ -1,9 +1,10 @@
 <template>
-  <img src="../assets/party.jpg" style="max-height: 500px; width: 1900px" />
+  <div class="image-frame">
+    <img src="../assets/party.jpg" alt="Party Image" />
+  </div>
   <div class="breadcrumbs">
-    <!-- Add your breadcrumb content here -->
-    <a href="/"> HOME / </a>
-    <router-link :to="`/${pathSegments[0]}`">{{ pathSegments[0].toLocaleUpperCase() }} </router-link>
+    <a href="/">HOME /</a>
+    <router-link :to="`/${pathSegments[0]}`">{{ pathSegments[0].toLocaleUpperCase() }}</router-link>
   </div>
   <div class="container">
     <!-- Section 1 -->
@@ -17,12 +18,25 @@
 import { useRoute } from 'vue-router';
 import StudentSection1 from '../components/StudentlifeComponents/StudentSection1.vue';
 import StudentSection2 from '../components/StudentlifeComponents/StudentSection2.vue';
+
 const route = useRoute();
 const routePath = route.path; // Get the current route path
 const pathSegments = routePath.split('/').filter((segment) => segment !== ''); // Split the path by '/' and remove empty segments
 </script>
 
 <style scoped>
+.image-frame {
+  width: 100%;
+  height: 500px;
+  overflow: hidden; /* Hide the overflow to ensure the image fits within the frame */
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the frame while maintaining aspect ratio */
+}
+
 .container {
   display: flex;
   justify-content: center; /* Center horizontally */

@@ -25,7 +25,7 @@
           and inspire students.
         </div>
       </div>
-      <img src="../../assets/event1.jpg" alt="Event 1" />
+      <img src="../../assets/virtual_male.jpg" alt="Event 1" />
       <div class="accordion-item">
         <input type="checkbox" id="accordion2" />
         <label for="accordion2" class="accordion-item-title"
@@ -37,7 +37,7 @@
           and immersive experience for students.
         </div>
       </div>
-      <img src="../../assets/event2.jpg" alt="Event 2" />
+      <img src="../../assets/viratual_male2.jpg" alt="Event 2" />
 
       <!-- Add more accordion items and corresponding images as needed -->
     </div>

@@ -26,7 +26,7 @@
           Prieston!
         </div>
       </div>
-      <img class="imageShort" src="../../assets/croped_cute.jpg" alt="Picture 1" />
+      <img class="imageShort" src="../../assets/cute_male.jpg" alt="Picture 1" />
       <div class="accordion-item">
         <input type="checkbox" id="accordion2" />
         <label for="accordion2" class="accordion-item-title"
