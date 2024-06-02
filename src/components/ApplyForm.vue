@@ -717,4 +717,7 @@ const submitForm = () => {
 .upload-box p {
   margin: 0;
 }
+
+@media (max-width: 768px) {
+}
 </style>
