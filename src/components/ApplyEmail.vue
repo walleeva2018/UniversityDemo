@@ -20,7 +20,7 @@
       </p>
       <p><strong>Email:</strong> info@university.edu</p>
       <p><strong>Phone:</strong> +123 456 7890</p>
-      <p><strong>Address:</strong> 123 University Street, City, Country</p>
+      <p><strong>Address:</strong> Preston, Lancashire, UK PR1 5NX</p>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 const universityName = 'Preston University';
 const universityDescription = `
-  Welcome to Preston University, a premier institution dedicated to academic excellence, innovation, and holistic development. At [University Name], we foster a vibrant and inclusive learning community where students are empowered to explore their passions, challenge assumptions, and make meaningful contributions to society. Our diverse range of programs, world-class faculty, state-of-the-art facilities, and vibrant campus life create an enriching environment for intellectual growth and personal transformation. Whether you are pursuing undergraduate, graduate, or professional studies, Preston University is committed to nurturing your potential and preparing you to thrive in a rapidly evolving world
+  Welcome to Preston University, a premier institution dedicated to academic excellence, innovation, and holistic development. At Prieston University, we foster a vibrant and inclusive learning community where students are empowered to explore their passions, challenge assumptions, and make meaningful contributions to society. Our diverse range of programs, world-class faculty, state-of-the-art facilities, and vibrant campus life create an enriching environment for intellectual growth and personal transformation. Whether you are pursuing undergraduate, graduate, or professional studies, Preston University is committed to nurturing your potential and preparing you to thrive in a rapidly evolving world
 `;
 </script>
 
