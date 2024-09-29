@@ -63,6 +63,11 @@ const router = createRouter({
       name: 'virtual',
       component: () => import('../components/VirtualEventView.vue')
     },
+    {
+      path: '/course-details',
+      name: 'courseDetails',
+      component: () => import('../components/CourseDetails.vue')
+    },
 
     { path: '/:pathMatch(.*)*', redirect: { name: 'home' } }
   ]

@@ -13,12 +13,7 @@
         </div>
 
         <!-- Navbar menu -->
-        <ul
-          v-if="isMenu || screenWidth > 1200"
-          class="navbar"
-          @click="toggleDropdown"
-          @mouseover="toggleDropdown"
-        >
+        <ul v-if="isMenu || screenWidth > 1200" class="navbar" @click="toggleDropdown" @mouseover="toggleDropdown">
           <li>
             <a href="#">International Study Center </a>
             <ul>
@@ -66,17 +61,13 @@
 
       <!-- Buttons for large screens -->
       <div class="justify-between flex gap-3">
-        <button
-          @click="gotoApplyForm"
-          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-bold right-item"
-        >
+        <button @click="gotoApplyForm"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-bold right-item">
           Apply Now
         </button>
 
-        <button
-          @click="gotoAskQuestion"
-          class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded font-bold right-item"
-        >
+        <button @click="gotoAskQuestion"
+          class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded font-bold right-item">
           Ask A question
         </button>
       </div>
@@ -131,19 +122,24 @@ onUnmounted(() => {
 #wrap {
   width: 100%;
   height: 50px;
-  flex-grow: 1; /* This will make the navbar take up the remaining space */
+  flex-grow: 1;
+  /* This will make the navbar take up the remaining space */
   display: flex;
-  justify-content: flex-end; /* Align items to the right */
+  justify-content: flex-end;
+  /* Align items to the right */
   margin-right: 20px;
   z-index: 2;
 }
+
 .navbar {
   height: 50px;
   padding: 0;
   margin: 0;
   position: absolute;
   z-index: 2;
+  cursor: pointer;
 }
+
 .navbar li {
   height: auto;
   width: 200px;
@@ -158,19 +154,23 @@ onUnmounted(() => {
   margin: 0;
   z-index: 2;
 }
+
 .navbar a {
   padding: 18px 0;
   border-left: 1px solid #ccc9c9;
   text-decoration: none;
-  color: #7a357d; /* Set text color to #7A357D */
+  color: #7a357d;
+  /* Set text color to #7A357D */
   display: block;
   z-index: 2;
 }
+
 .navbar li:hover,
 a:hover {
   background-color: grey;
   z-index: 2;
 }
+
 .navbar li ul {
   display: none;
   height: auto;
@@ -178,14 +178,17 @@ a:hover {
   padding: 0;
   z-index: 2;
 }
+
 .navbar li:hover ul {
   display: block;
   z-index: 2;
 }
+
 .navbar li ul li {
   background-color: white;
   z-index: 2;
 }
+
 .navbar li ul li a {
   border-left: 1px solid #444444;
   border-right: 1px solid #444444;
@@ -193,6 +196,7 @@ a:hover {
   border-bottom: 1px solid #444444;
   z-index: 2;
 }
+
 .navbar li ul li a:hover {
   background-color: #a3a1a1;
   z-index: 2;
@@ -203,50 +207,70 @@ a:hover {
   width: 200px;
   z-index: 2;
 }
+
 @media (max-width: 1200px) {
   .right-item {
-    width: 100px; /* Adjust the width for smaller screens */
+    width: 100px;
+    /* Adjust the width for smaller screens */
   }
 
   .navbar {
-    position: static; /* Change position to static for smaller screens */
-    display: flex; /* Display navbar items as flexbox */
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center items horizontally */
+    position: static;
+    /* Change position to static for smaller screens */
+    display: flex;
+    /* Display navbar items as flexbox */
+    flex-direction: column;
+    /* Arrange items vertically */
+    align-items: center;
+    /* Center items horizontally */
   }
 
   .navbar li {
-    width: 100%; /* Make each list item take up the full width */
+    width: 100%;
+    /* Make each list item take up the full width */
     float: none;
-    text-align: center; /* Center text within list items */
+    text-align: center;
+    /* Center text within list items */
     background-color: #a3a1a1;
   }
 
   .navbar li ul {
-    display: none; /* Hide dropdown menus by default */
+    display: none;
+    /* Hide dropdown menus by default */
   }
 
   .navbar li.active ul {
-    display: block; /* Show dropdown menus when the parent li is active */
+    display: block;
+    /* Show dropdown menus when the parent li is active */
   }
 
   .navbar li ul li {
-    display: block; /* Display dropdown items as block */
+    display: block;
+    /* Display dropdown items as block */
   }
 
   .navbar a {
-    border-left: none; /* Remove border on left side */
-    border-right: none; /* Remove border on right side */
-    border-top: 1px solid #c9d4d8; /* Add top border between items */
-    border-bottom: none; /* Remove bottom border */
-    padding: 12px 0; /* Adjust padding */
-    color: #7a357d; /* Set text color to #7A357D */
+    border-left: none;
+    /* Remove border on left side */
+    border-right: none;
+    /* Remove border on right side */
+    border-top: 1px solid #c9d4d8;
+    /* Add top border between items */
+    border-bottom: none;
+    /* Remove bottom border */
+    padding: 12px 0;
+    /* Adjust padding */
+    color: #7a357d;
+    /* Set text color to #7A357D */
   }
 
   .right-item {
-    float: none; /* Remove float */
-    width: 100%; /* Make the buttons take up full width */
+    float: none;
+    /* Remove float */
+    width: 100%;
+    /* Make the buttons take up full width */
   }
+
   .show-icon {
     display: block;
   }
