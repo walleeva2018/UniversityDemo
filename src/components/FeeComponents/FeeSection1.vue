@@ -40,20 +40,15 @@
     <div class="accordion">
       <div class="flex">
         <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-          <path
-            fill="black"
-            fill-rule="evenodd"
+          <path fill="black" fill-rule="evenodd"
             d="M3.464 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.464 8.535C4.93 22 7.286 22 12 22c4.714 0 7.071 0 8.535-1.465C22 19.072 22 16.714 22 12s0-7.071-1.465-8.536C19.072 2 16.714 2 12 2S4.929 2 3.464 3.464m2.96 6.056a.75.75 0 0 1 1.056-.096l.277.23c.605.504 1.12.933 1.476 1.328c.379.42.674.901.674 1.518s-.295 1.099-.674 1.518c-.356.395-.871.824-1.476 1.328l-.277.23a.75.75 0 1 1-.96-1.152l.234-.195c.659-.55 1.09-.91 1.366-1.216c.262-.29.287-.427.287-.513c0-.086-.025-.222-.287-.513c-.277-.306-.707-.667-1.366-1.216l-.234-.195a.75.75 0 0 1-.096-1.056M17.75 15a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h5a.75.75 0 0 1 .75.75"
-            clip-rule="evenodd"
-          />
+            clip-rule="evenodd" />
         </svg>
         <h5 style="color: #7b4993">scholarships</h5>
       </div>
       <div class="accordion-item">
         <input type="checkbox" id="accordion1" />
-        <label for="accordion1" class="accordion-item-title"
-          ><span class="icon"></span>How to get full fund?</label
-        >
+        <label for="accordion1" class="accordion-item-title"><span class="icon"></span>How to get full fund?</label>
         <div class="accordion-item-desc">
           The University of Prieston offers a wide range of scholarships for merited student . Submit your
           application today
@@ -64,7 +59,8 @@
 </template>
 <style scoped>
 .section1 {
-  width: calc(70% - 40px); /* Adjust width for responsiveness */
+  width: calc(70% - 40px);
+  /* Adjust width for responsiveness */
   margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -139,12 +135,14 @@
   border-top: 1px dashed #ddd;
   padding: 10px 20px 20px;
   box-sizing: border-box;
-  animation: fadeIn 0.3s ease; /* Apply animation */
+  animation: fadeIn 0.3s ease;
+  /* Apply animation */
 }
 
-.accordion-item input[type='checkbox']:checked ~ .accordion-item-title {
+.accordion-item input[type='checkbox']:checked~.accordion-item-title {
   background-color: #006388;
 }
+
 .accordion-item input[type='checkbox'] {
   position: absolute;
   height: 0;
@@ -152,16 +150,16 @@
   opacity: 0;
 }
 
-.accordion-item input[type='checkbox']:checked ~ .accordion-item-desc {
+.accordion-item input[type='checkbox']:checked~.accordion-item-desc {
   display: block;
 }
 
-.accordion-item input[type='checkbox']:checked ~ .accordion-item-title .icon:after {
+.accordion-item input[type='checkbox']:checked~.accordion-item-title .icon:after {
   content: '-';
   font-size: 20px;
 }
 
-.accordion-item input[type='checkbox'] ~ .accordion-item-title .icon:after {
+.accordion-item input[type='checkbox']~.accordion-item-title .icon:after {
   content: '+';
   font-size: 20px;
 }
@@ -179,6 +177,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -188,14 +187,19 @@
   .accordion {
     padding: 0 16px;
   }
+
   .accordion h1 {
     font-size: 22px;
   }
+
   .programs-table {
-    width: max-content; /* Adjust width for horizontal scrolling */
+    width: max-content;
+    /* Adjust width for horizontal scrolling */
     border-collapse: collapse;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
+    /* Prevent text wrapping */
   }
+
   .section1 {
     width: calc(100% - 40px);
     overflow-x: auto;
