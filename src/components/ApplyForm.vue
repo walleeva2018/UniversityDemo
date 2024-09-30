@@ -1,723 +1,324 @@
 <template>
-  <Toast />
+  <div class="application-form">
+    <header class="bg-gray-800 text-white p-4">
+      <nav class="container mx-auto">
+        <a href="/" class="hover:underline">Home</a> &gt; Apply
+      </nav>
+    </header>
 
-  <div style="background-color: #1f2937; width: 100%;height: 30px; margin-bottom;: 5px" class="flex">
-    <h1 class="ml-10 text-white">
-      <a href="/"><u>Home ></u></a>
-    </h1>
+    <main class="container mx-auto px-4 py-8">
+      <section class="mb-8">
+        <div class="flex flex-wrap justify-between items-center mb-6">
+          <div v-for="(step, index) in stepsName" :key="index" class="text-center mb-4 sm:mb-0">
+            <i :class="[stepIcons[index], getStepClass(index)]" aria-hidden="true"></i>
+            <h2 :class="['text-lg sm:text-xl font-semibold mt-2', getStepClass(index)]">
+              {{ index + 1 }}. {{ step }}
+            </h2>
+          </div>
+        </div>
+      </section>
 
-    <h1 class="ml-5 text-white">Apply</h1>
-  </div>
-  <div class="container">
-    <div class="flex justify-between gap-10">
-      <div v-for="(step, index) in stepsName" :key="index" class="text-center">
-        <i
-          :class="stepIcons[index]"
-          style="font-size: 28px; margin-top: 10px"
-          :style="{
-            color: currentStep == index ? '#761e67' : currentStep > index ? 'red' : 'grey'
-          }"
-        ></i>
-        <h1
-          style="font-size: 28px"
-          :style="{
-            color: currentStep == index ? '#761e67' : currentStep > index ? 'red' : 'grey'
-          }"
-        >
-          {{ index + 1 }}. {{ step }}
-        </h1>
+      <form @submit.prevent="nextStep">
+        <section v-show="currentStep === 0" class="mb-8">
+          <h2 class="text-2xl font-bold text-primary mb-4">Student Details</h2>
+          <p class="text-gray-600 mb-6">
+            Please provide your personal information to process your application.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" v-model="studentDetails.firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="familyName">Family Name</label>
+              <input type="text" id="familyName" v-model="studentDetails.familyName" required />
+            </div>
+            <div class="form-group">
+              <label for="birthday">Birthday</label>
+              <input type="date" id="birthday" v-model="studentDetails.birthday" required />
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <div class="flex gap-4">
+                <button type="button" @click="studentDetails.gender = 'male'"
+                  :class="['btn', studentDetails.gender === 'male' ? 'btn-primary' : 'btn-outline']">
+                  Male
+                </button>
+                <button type="button" @click="studentDetails.gender = 'female'"
+                  :class="['btn', studentDetails.gender === 'female' ? 'btn-primary' : 'btn-outline']">
+                  Female
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <input type="text" id="nationality" v-model="studentDetails.nationality" required />
+            </div>
+            <div class="form-group">
+              <label for="birthplace">Place of Birth</label>
+              <input type="text" id="birthplace" v-model="studentDetails.birthplace" required />
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-primary mt-8 mb-4">Student Address</h2>
+          <p class="text-gray-600 mb-6">
+            Please provide your contact information.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" v-model="studentDetails.mobile" placeholder="+880....." required />
+            </div>
+            <div class="form-group">
+              <label for="alternateNumber">Alternate Number</label>
+              <input type="tel" id="alternateNumber" v-model="studentDetails.alternateNumber" placeholder="+880....." />
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-primary mt-8 mb-4">Get Notified</h2>
+          <p class="text-gray-600 mb-6">
+            Choose how you'd like to receive information on our products, services, and promotional offers.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <label class="inline-flex items-center">
+              <input type="checkbox" v-model="studentDetails.notifications.email" class="form-checkbox" />
+              <span class="ml-2">Email</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="checkbox" v-model="studentDetails.notifications.sms" class="form-checkbox" />
+              <span class="ml-2">SMS</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="checkbox" v-model="studentDetails.notifications.whatsapp" class="form-checkbox" />
+              <span class="ml-2">WhatsApp</span>
+            </label>
+          </div>
+        </section>
+
+        <section v-show="currentStep === 1" class="mb-8">
+          <h2 class="text-2xl font-bold text-primary mb-4">Subject Details</h2>
+          <p class="text-gray-600 mb-6">Please select your subject preferences.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-group">
+              <label for="subjectMajor">Major Subject</label>
+              <select id="subjectMajor" required>
+                <option disabled value="">Select a Major Subject</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Business Administration">Business Administration</option>
+                <option value="Engineering">Engineering</option>
+                <!-- Add more subjects as needed -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subjectMinor">Minor Subject</label>
+              <select id="subjectMinor" required>
+                <option disabled value="">Select a Minor Subject</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Economics">Economics</option>
+                <option value="Physics">Physics</option>
+                <!-- Add more subjects as needed -->
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Add sections for other steps here -->
+
+      </form>
+    </main>
+
+    <footer class="mt-8 p-4">
+      <div class="container mx-auto flex justify-between">
+        <button @click="previous" class="btn btn-outline" :disabled="currentStep === 0">Previous</button>
+        <button @click="nextStep" class="btn btn-primary">
+          {{ currentStep === steps - 1 ? 'Submit' : 'Next' }}
+        </button>
+        <button @click="cancel" class="btn btn-outline btn-error">Cancel</button>
       </div>
-    </div>
-    <div class="form">
-      <div v-show="currentStep === 0">
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Student details
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Tell us about yourself. We need some details from you so we can process your application. All fields
-          are mandatory unless stated as 'optional'.
-        </h1>
-        <h1 style="font-size: 20px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Do you work with an Agent?
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span>
-        </h1>
-        <div class="flex flex-wrap gap-3">
-          <div class="flex align-items-center">
-            <RadioButton v-model="agent" inputId="ingredient1" name="agent" value="Working" />
-            <label for="ingredient1" class="ml-2">Yes</label>
-          </div>
-          <div class="flex align-items-center">
-            <RadioButton v-model="agent" inputId="ingredient2" name="agent" value="NotWorking" />
-            <label for="ingredient2" class="ml-2">No</label>
-          </div>
-        </div>
-        <h1 style="font-size: 20px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Please Tell us How you intend to fund your study?
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span>
-        </h1>
-        <div class="flex flex-wrap gap-3">
-          <div class="flex align-items-center">
-            <RadioButton v-model="agent" inputId="ingredient1" name="agent" value="Working" />
-            <label for="ingredient1" class="ml-2">Self and Family Funded</label>
-          </div>
-          <div class="flex align-items-center">
-            <RadioButton v-model="agent" inputId="ingredient2" name="agent" value="NotWorking" />
-            <label for="ingredient2" class="ml-2">No funding Require full scholarship</label>
-          </div>
-          <div class="flex align-items-center">
-            <RadioButton v-model="agent" inputId="ingredient2" name="agent" value="Other" />
-            <label for="ingredient2" class="ml-2">Partially Funded</label>
-          </div>
-        </div>
-
-        <div>
-          <label
-            for="fieldName"
-            style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-            >First Name</label
-          >
-          <div style="position: relative; margin-bottom: 20px">
-            <input
-              type="text"
-              id="fieldName"
-              v-model="inputValue"
-              style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-              placeholder="Type here..."
-            />
-          </div>
-        </div>
-        <div>
-          <label
-            for="fieldName"
-            style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-            >Family Name</label
-          >
-          <div style="position: relative; margin-bottom: 20px">
-            <input
-              type="text"
-              id="fieldName"
-              v-model="inputValue"
-              style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-              placeholder="Type here..."
-            />
-          </div>
-          <label
-            for="birthday"
-            style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-            >Birthday:
-          </label>
-          <input type="date" id="birthday" name="birthday" class="custom-date-input" />
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Gender:</label
-        >
-        <div class="gender-buttons">
-          <button :class="{ selected: gender === 'male' }" @click="gender = 'male'">Male</button>
-          <button :class="{ selected: gender === 'female' }" @click="gender = 'female'">Female</button>
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Nationality</label
-        >
-        <div style="position: relative; margin-bottom: 20px">
-          <input
-            type="text"
-            id="fieldName"
-            v-model="inputValue"
-            style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-            placeholder="Type here..."
-          />
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Where you are born</label
-        >
-        <div style="position: relative; margin-bottom: 20px">
-          <input
-            type="text"
-            id="fieldName"
-            v-model="inputValue"
-            style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-            placeholder="Type here..."
-          />
-        </div>
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Student Address
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Select your country to start looking for your address. Enter address manually.
-        </h1>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Mobile</label
-        >
-        <div style="position: relative; margin-bottom: 20px">
-          <input
-            type="number"
-            id="fieldName"
-            v-model="inputValue"
-            style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-            placeholder="+880....."
-          />
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Alternate Number</label
-        >
-        <div style="position: relative; margin-bottom: 20px">
-          <input
-            type="number"
-            id="fieldName"
-            v-model="inputValue"
-            style="width: 100%; border: none; border-bottom: 1px solid #333; font-size: 16px; padding: 8px"
-            placeholder="+880....."
-          />
-        </div>
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Get Notified
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          I would like to receive information on Study Group products, services and promotional offers that
-          may be of interest to me through the following modes of communication. For more information about
-          how your data is used and stored view our <a><u>Privacy Policy</u> </a>.
-        </h1>
-
-        <div class="flex">
-          <Checkbox v-model="email" binary variant="filled" />
-
-          <label class="ml-5">Email</label>
-        </div>
-        <div class="flex">
-          <Checkbox v-model="sms" binary variant="filled" />
-
-          <label class="ml-5">SMS</label>
-        </div>
-        <div class="flex">
-          <Checkbox v-model="wp" binary variant="filled" />
-
-          <label class="ml-5">Whatsapp</label>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; margin-top: 20px" class="justify-between gap-6">
-          <button @click="cancel" class="custom-button cancel-button">Cancel</button>
-          <button @click="nextStep" class="custom-button next-button">Next</button>
-        </div>
-      </div>
-      <div v-show="currentStep === 1">
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Subject details
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span>
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          This is where you tell us which subject you would like to study with us and give us an indication of
-          programme level and programme most applicable to your study goals. Find more information on our
-          programme pages.
-        </h1>
-
-        <TreeSelect
-          v-model="selectedSubject"
-          :options="subjectOptions"
-          placeholder="Which Subject would you like to study"
-          class="md:w-20rem w-full"
-          style="margin-right: 10px"
-        />
-        <TreeSelect
-          v-model="selectedTimeRange"
-          :options="timeRangeOptions"
-          placeholder="Select Time Range"
-          class="md:w-20rem w-full"
-        />
-        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center">
-          <button @click="previous" class="custom-button previous-button">Previous</button>
-          <div style="display: flex">
-            <button @click="cancel" class="custom-button cancel-button">Cancel</button>
-            <button @click="nextStep" class="custom-button next-button">Next</button>
-          </div>
-        </div>
-      </div>
-      <div v-show="currentStep === 2">
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Other details
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          We need some additional information from you to support your application. All fields are mandatory
-          unless stated 'optional'.
-        </h1>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Have you previously studied in the UK?</label
-        >
-        <div class="gender-buttons">
-          <button :class="{ selected: uk === 'yes' }" @click="uk = 'yes'">YES</button>
-          <button :class="{ selected: uk === 'no' }" @click="uk = 'no'">NO</button>
-        </div>
-        <label
-          v-if="uk == 'yes'"
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Did you require a visa to study?
-        </label>
-        <div class="gender-buttons" v-if="uk == 'yes'">
-          <button :class="{ selected: visa === 'yes' }" @click="visa = 'yes'">YES</button>
-          <button :class="{ selected: visa === 'no' }" @click="visa = 'no'">NO</button>
-        </div>
-        <label
-          v-if="uk == 'no'"
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Is your visa rejected for any of the following reason
-        </label>
-        <TreeSelect
-          v-if="uk == 'no'"
-          v-model="reason"
-          :options="rejectedReason"
-          placeholder="Reason for rejection"
-          class="md:w-20rem w-full"
-        />
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Do you want to add StudyCare insurance cover while studying abroad?
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span>
-        </label>
-        <div class="gender-buttons">
-          <button :class="{ selected: insurance === 'yes' }" @click="insurance = 'yes'">YES</button>
-          <button :class="{ selected: insurance === 'no' }" @click="insurance = 'no'">NO</button>
-        </div>
-        <div class="gender-buttons" v-if="insurance == 'yes'" style="margin-top: 5px">
-          <button :class="{ selected: period === '12' }" @click="period = '12'">Get for 12 Months</button>
-          <button :class="{ selected: period === '24' }" @click="period = '24'">Get for 2 Years</button>
-        </div>
-        <div class="zebra-border" v-if="insurance == 'yes'" style="margin-top: 5px">
-          StudyCare Insurance-UK (up to 12 months) - a per week policy to cover your stay at the International
-          Study Centre only. StudyCare Insurance-UK (24 months) - for the duration of the pathway programme
-          and one year university study. If you choose to purchase StudyCare Insurance-UK, the full cost of
-          your preferred insurance will be added to your invoice. StudyCare Insurance-UK (24 months) costs
-          £6.93 per week (total £720). StudyCare Insurance-UK (12 months) costs £8.65 per week (total £450).
-          These prices include Insurance Premium Tax. Please read the full policy terms and conditions here.
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Do you have any medical disability or special educational needs which may affect your studies?
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span></label
-        >
-        <div class="gender-buttons">
-          <button :class="{ selected: disability === 'yes' }" @click="disability = 'yes'">YES</button>
-          <button :class="{ selected: disability === 'no' }" @click="disability = 'no'">NO</button>
-        </div>
-        <label
-          class="input-label"
-          style="font-size: 20px; color: #333; margin-bottom: 5px; display: block; margin-top: 10px"
-          >Do you have any criminal convictions?
-          <span class="tooltip">
-            <i class="fas fa-question-circle"></i>
-            <span class="tooltiptext">Tooltip text here</span>
-          </span></label
-        >
-        <div class="gender-buttons">
-          <button :class="{ selected: criminal === 'yes' }" @click="criminal = 'yes'">YES</button>
-          <button :class="{ selected: criminal === 'no' }" @click="criminal = 'no'">NO</button>
-        </div>
-        <div class="zebra-border" v-if="criminal == 'yes'" style="margin-top: 5px">
-          The Student Enrolment Advisor who processes your application will ask you to send a full description
-          of events.
-        </div>
-        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center">
-          <button @click="previous" class="custom-button previous-button">Previous</button>
-          <div style="display: flex">
-            <button @click="cancel" class="custom-button cancel-button">Cancel</button>
-            <button @click="nextStep" class="custom-button next-button">Next</button>
-          </div>
-        </div>
-      </div>
-      <div v-show="currentStep === 3">
-        <h1 style="font-size: 28px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Document upload
-        </h1>
-        <h1 style="font-size: 15px; color: #761e67; margin-bottom: 20px; margin-left: 5px; margin-top: 5px">
-          Accelerate your application - Submit your documents now to speed up your offer of study. If you
-          don't have your documents ready, you can still apply online and provide these at a later time. You
-          can upload some or all of the following:
-        </h1>
-        <ul type="circle">
-          <li>Academic transcripts</li>
-          <li>English tests</li>
-          <li>Passport</li>
-          <li>Visas</li>
-          <li>Other, including sponsorship letter or statement of interest</li>
-        </ul>
-        <div class="gender-buttons">
-          <button :class="{ selected: upload === 'yes' }" @click="upload = 'yes'">
-            Yes, Upload the documents
-          </button>
-          <button :class="{ selected: upload === 'no' }" @click="upload = 'no'">
-            NO, Apply now without documents
-          </button>
-        </div>
-        <div v-if="upload == 'yes'">
-          <h1
-            style="
-              font-size: 20px;
-              color: #761e67;
-              margin-bottom: 20px;
-              margin-left: 5px;
-              margin-top: 5px;
-              text-align: center;
-            "
-          >
-            Academic transcripts
-          </h1>
-          <div class="upload-box" @dragover.prevent @drop="handleDrop" @click="openFileInput">
-            <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" />
-            <p v-if="!successMessage">Drag & Drop files here or click to upload</p>
-            <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-          </div>
-          <h1
-            style="
-              font-size: 20px;
-              color: #761e67;
-              margin-bottom: 20px;
-              margin-left: 5px;
-              margin-top: 5px;
-              text-align: center;
-            "
-          >
-            IELTS
-          </h1>
-          <div class="upload-box" @dragover.prevent @drop="handleDrop" @click="openFileInput">
-            <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" />
-            <p v-if="!successMessage">Drag & Drop files here or click to upload</p>
-            <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-          </div>
-          <h1
-            style="
-              font-size: 20px;
-              color: #761e67;
-              margin-bottom: 20px;
-              margin-left: 5px;
-              margin-top: 5px;
-              text-align: center;
-            "
-          >
-            Visa
-          </h1>
-          <div class="upload-box" @dragover.prevent @drop="handleDrop" @click="openFileInput">
-            <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" />
-            <p v-if="!successMessage">Drag & Drop files here or click to upload</p>
-            <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-          </div>
-          <h1
-            style="
-              font-size: 20px;
-              color: #761e67;
-              margin-bottom: 20px;
-              margin-left: 5px;
-              margin-top: 5px;
-              text-align: center;
-            "
-          >
-            Passport
-          </h1>
-          <div class="upload-box" @dragover.prevent @drop="handleDrop" @click="openFileInput">
-            <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" />
-            <p v-if="!successMessage">Drag & Drop files here or click to upload</p>
-            <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-          </div>
-        </div>
-        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center">
-          <button @click="previous" class="custom-button previous-button">Previous</button>
-          <div style="display: flex">
-            <button @click="cancel" class="custom-button cancel-button">Cancel</button>
-            <button @click="submitForm" class="custom-button next-button">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="progress">
-      <span>Step {{ currentStep + 1 }}</span>
-      <span>/</span>
-      <span>{{ steps.length }}</span>
-    </div>
+    </footer>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-import RadioButton from 'primevue/radiobutton';
+import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
-import Checkbox from 'primevue/checkbox';
-import TreeSelect from 'primevue/treeselect';
-const gender = ref('');
-
-const agent = ref('');
-const email = ref(false);
-const sms = ref(false);
-const wp = ref(false);
-const uk = ref('');
-const criminal = ref('');
-const disability = ref('');
-const insurance = ref('');
-const visa = ref('');
-const period = ref('');
-const upload = ref('');
-
-const selectedSubject = ref(null);
-const selectedTimeRange = ref(null);
-const reason = ref(null);
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-
-const subjectOptions = ref([
-  { label: 'Mathematics', value: 'math' },
-  { label: 'Science', value: 'science' },
-  { label: 'History', value: 'history' }
-]);
-
-const timeRangeOptions = ref([
-  { label: 'Morning', value: 'morning' },
-  { label: 'Afternoon', value: 'afternoon' },
-  { label: 'Evening', value: 'evening' }
-]);
-
-const rejectedReason = ref([
-  { label: 'Financial', value: 'finance' },
-  { label: 'Financial', value: 'finance' },
-  { label: 'Financial', value: 'finance' }
-]);
-
-const currentStep = ref(0);
-const steps = [1, 2, 3, 4];
 const router = useRouter();
-const stepsName = ['Student Details', 'Subject Details', 'Other Details', 'Documents'];
-const stepIcons = [
-  'fas fa-user', // Example Font Awesome icon class for step 1
-  'fas fa-book', // Example Font Awesome icon class for step 2
-  'fas fa-info', // Example Font Awesome icon class for step 3
-  'fas fa-file' // Example Font Awesome icon class for step 4
-];
-const fileInput = ref(null);
-const successMessage = ref('');
 
-const openFileInput = () => {
-  fileInput.value.click();
-};
+const steps = 3;
+const currentStep = ref(0);
+const stepsName = ['Student Details', 'Subject Details', 'Review'];
+const stepIcons = ['fas fa-user', 'fas fa-book', 'fas fa-check'];
 
-const handleFileChange = (event) => {
-  const files = event.target.files;
-  handleFiles(files);
-};
+const studentDetails = reactive({
+  firstName: '',
+  familyName: '',
+  birthday: '',
+  gender: '',
+  nationality: '',
+  birthplace: '',
+  mobile: '',
+  alternateNumber: '',
+  notifications: {
+    email: false,
+    sms: false,
+    whatsapp: false
+  }
+});
 
-const handleDrop = (event) => {
-  event.preventDefault();
-  const files = event.dataTransfer.files;
-  handleFiles(files);
-};
-
-const handleFiles = (files) => {
-  // Handle uploaded files here
-  // For demonstration purposes, you can log the files to the console
-  console.log(files);
-  successMessage.value = 'Files uploaded successfully!';
-  toast('Uploaded Succeesfully', {
-    theme: 'auto',
-    type: 'success',
-    dangerouslyHTMLString: true
-  });
+const getStepClass = (index) => {
+  if (currentStep.value === index) return 'text-primary';
+  if (currentStep.value > index) return 'text-success';
+  return 'text-gray-400';
 };
 
 const nextStep = () => {
-  if (currentStep.value < steps.length - 1) {
+  if (currentStep.value < steps - 1) {
     currentStep.value++;
+  } else {
+    // Submit the form
+    router.push('/thank-you');
   }
 };
+
 const previous = () => {
-  currentStep.value--;
+  if (currentStep.value > 0) {
+    currentStep.value--;
+  }
 };
 
 const cancel = () => {
   router.push('/');
 };
-
-const submitForm = () => {
-  toast('Form Submitted', {
-    theme: 'auto',
-    type: 'success',
-    dangerouslyHTMLString: true
-  });
-};
 </script>
 
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+<style scoped>
+.application-form {
+  background-color: #f9fafb;
 }
 
-.form {
-  width: 80%;
+header {
+  background-color: #1f2937;
+  /* Darker gray for header */
 }
 
-.form > div {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+nav a {
+  color: #d1d5db;
+  /* Lighter gray for links */
 }
 
-.form > div > input {
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ccc;
+main {
+  padding: 2rem 1rem;
 }
 
-.form > div > button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+.form-group label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #4b5563;
+  /* Cool gray text */
 }
 
-.progress {
-  margin-top: 20px;
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  /* Border color for inputs */
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidd;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Tooltip text visibility on hover */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-.custom-button {
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-.previous-button {
-  background-color: #6c757d; /* Grey color */
-  color: white;
-}
-
-.cancel-button {
-  background-color: #dc3545; /* Red color */
-  color: white;
-  margin-right: 10px; /* Adjust margin as needed */
-}
-
-.next-button {
-  background-color: #007bff; /* Blue color */
-  color: white;
-}
-
-.custom-button:hover {
-  filter: brightness(90%);
-}
-.custom-date-input {
-  width: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 5px;
-}
-
-.custom-date-input:focus {
+.form-group input:focus {
+  border-color: #761E67;
+  /* Blue for focus state */
   outline: none;
-  border-color: #007bff; /* Blue color */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-.gender-buttons {
-  display: flex;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
-.gender-buttons button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.gender-buttons button.selected {
-  background-color: #007bff;
+.btn-primary {
+  background-color: #761E67;
+  color: #fff;
+  border: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #761E67;
+  border: 2px solid #761E67;
+}
+
+.btn-primary:hover,
+.btn-outline:hover {
+  opacity: 0.9;
+}
+
+.btn-error {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-error:hover {
+  background-color: #ef4444;
   color: #fff;
 }
 
-.gender-buttons button:not(:last-child) {
-  margin-right: 10px;
+footer {
+  border-top: 1px solid #e5e7eb;
+  background-color: #f3f4f6;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-.zebra-border {
-  border: 3px solid black;
-  border-radius: 10px;
-  padding: 10px;
-}
-.upload-box {
-  width: 800px;
-  height: 300px;
-  border: 2px dashed #aaa;
-  margin-top: 20px;
-  margin-left: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+footer button {
+  min-width: 120px;
 }
 
-.upload-box p {
-  margin: 0;
+.text-primary {
+  color: #761E67;
 }
 
-@media (max-width: 768px) {
+.text-success {
+  color: #10b981;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+h2 {
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  .application-form {
+    padding: 4rem;
+  }
+
+  footer {
+    padding: 1.5rem;
+  }
 }
 </style>

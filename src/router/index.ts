@@ -21,7 +21,7 @@ const router = createRouter({
     {
       path: '/apply',
       name: 'apply',
-      component: () => import('../components/ApplyEmail.vue')
+      component: () => import('../components/ApplyForm.vue')
     },
     {
       path: '/entry',
