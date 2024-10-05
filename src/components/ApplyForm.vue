@@ -1,5 +1,6 @@
 <template>
   <div class="application-form">
+    <ToastifyContainer />
     <header class="bg-gray-800 text-white p-4">
       <nav class="container mx-auto">
         <a href="/" class="hover:underline">Home</a> &gt; Apply
@@ -77,51 +78,31 @@
             </div>
           </div>
 
-          <h2 class="text-2xl font-bold text-primary mt-8 mb-4">Get Notified</h2>
-          <p class="text-gray-600 mb-6">
-            Choose how you'd like to receive information on our products, services, and promotional offers.
-          </p>
 
-          <div class="flex flex-wrap gap-4">
-            <label class="inline-flex items-center">
-              <input type="checkbox" v-model="studentDetails.notifications.email" class="form-checkbox" />
-              <span class="ml-2">Email</span>
-            </label>
-            <label class="inline-flex items-center">
-              <input type="checkbox" v-model="studentDetails.notifications.sms" class="form-checkbox" />
-              <span class="ml-2">SMS</span>
-            </label>
-            <label class="inline-flex items-center">
-              <input type="checkbox" v-model="studentDetails.notifications.whatsapp" class="form-checkbox" />
-              <span class="ml-2">WhatsApp</span>
-            </label>
-          </div>
+
+
         </section>
 
         <section v-show="currentStep === 1" class="mb-8">
           <h2 class="text-2xl font-bold text-primary mb-4">Subject Details</h2>
           <p class="text-gray-600 mb-6">Please select your subject preferences.</p>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="form-group">
-              <label for="subjectMajor">Major Subject</label>
-              <select id="subjectMajor" required>
-                <option disabled value="">Select a Major Subject</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Business Administration">Business Administration</option>
-                <option value="Engineering">Engineering</option>
-                <!-- Add more subjects as needed -->
+              <label for="subjectMajor">Category</label>
+              <select id="subjectMajor" v-model="studentDetails.programme" required>
+                <option disabled value="">Select Programme</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Master">Master</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="subjectMinor">Minor Subject</label>
-              <select id="subjectMinor" required>
-                <option disabled value="">Select a Minor Subject</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Economics">Economics</option>
-                <option value="Physics">Physics</option>
-                <!-- Add more subjects as needed -->
+              <label for="subjectMinor">Subject</label>
+              <select id="subjectMinor" v-model="studentDetails.subject" required>
+                <option disabled value="">Select a Subject</option>
+                <option v-for="subject in filteredSubjects" :key="subject" :value="subject">
+                  {{ subject }}
+                </option>
               </select>
             </div>
           </div>
@@ -129,31 +110,94 @@
 
         <!-- Add sections for other steps here -->
 
+        <section v-show="currentStep === 2" class="mb-8">
+          <h2 class="text-2xl font-bold text-primary mb-4">Review Your Details</h2>
+          <p class="text-gray-600 mb-6">Please review all the information you have entered before submitting.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Display each student detail -->
+            <div class="form-group">
+              <label>First Name:</label>
+              <p>{{ studentDetails.firstName }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Family Name:</label>
+              <p>{{ studentDetails.familyName }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Birthday:</label>
+              <p>{{ studentDetails.birthday }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Gender:</label>
+              <p>{{ studentDetails.gender }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Nationality:</label>
+              <p>{{ studentDetails.nationality }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Place of Birth:</label>
+              <p>{{ studentDetails.birthplace }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Mobile Number:</label>
+              <p>{{ studentDetails.mobile }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Alternate Number:</label>
+              <p>{{ studentDetails.alternateNumber }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Programme:</label>
+              <p>{{ studentDetails.programme }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>Subject:</label>
+              <p>{{ studentDetails.subject }}</p>
+            </div>
+          </div>
+        </section>
+
+
       </form>
     </main>
 
     <footer class="mt-8 p-4">
       <div class="container mx-auto flex justify-between">
         <button @click="previous" class="btn btn-outline" :disabled="currentStep === 0">Previous</button>
-        <button @click="nextStep" class="btn btn-primary">
-          {{ currentStep === steps - 1 ? 'Submit' : 'Next' }}
+        <button @click="nextStep" :disabled="isLoading" class="btn btn-primary">
+          {{ currentStep === steps - 1 ? isLoading ? 'Loading...' : 'Submit' : 'Next' }}
         </button>
         <button @click="cancel" class="btn btn-outline btn-error">Cancel</button>
       </div>
     </footer>
   </div>
+
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { toast, ToastifyContainer } from 'vue3-toastify';
 
 const router = useRouter();
 
 const steps = 3;
 const currentStep = ref(0);
+const isLoading = ref(false)
 const stepsName = ['Student Details', 'Subject Details', 'Review'];
 const stepIcons = ['fas fa-user', 'fas fa-book', 'fas fa-check'];
+
 
 const studentDetails = reactive({
   firstName: '',
@@ -164,25 +208,82 @@ const studentDetails = reactive({
   birthplace: '',
   mobile: '',
   alternateNumber: '',
-  notifications: {
-    email: false,
-    sms: false,
-    whatsapp: false
-  }
+  programme: '',
+  subject: ''
+
 });
 
 const getStepClass = (index) => {
+
   if (currentStep.value === index) return 'text-primary';
   if (currentStep.value > index) return 'text-success';
   return 'text-gray-400';
 };
 
-const nextStep = () => {
+const bachelorSubjects = ['Data Analytics', 'Enterpreneurship', 'International Business', 'Advertising & Public Relations', 'Media Studies', 'Computer Science'];
+const masterSubjects = ['Msc in Business Management', 'MA in International Relationship'];
+
+const filteredSubjects = computed(() => {
+  return studentDetails.programme === 'Bachelor' ? bachelorSubjects : masterSubjects;
+});
+
+const nextStep = async () => {
+
+  if (!studentDetails.firstName || !studentDetails.familyName || !studentDetails.birthday || !studentDetails.gender || !studentDetails.nationality || !studentDetails.birthplace) {
+    toast.error('Please fill all fields!');
+    return;
+  }
+
+
+  if (currentStep.value === 1 && (studentDetails.programme === '' || studentDetails.subject === '')) {
+    toast.error('Please fill all fields!');
+    return;
+
+  }
+
   if (currentStep.value < steps - 1) {
     currentStep.value++;
   } else {
-    // Submit the form
-    router.push('/thank-you');
+    isLoading.value = true
+    try {
+      const response = await fetch('http://localhost:3000/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: 'zubairahmedrafi37@gmail.com', // Replace with the actual recipient email
+          subject: 'New Student Application',
+          html: `
+            <h1>New Student Application</h1>
+            <p>A new student has submitted an application:</p>
+            <ul>
+              <li>Name: ${studentDetails.firstName} ${studentDetails.familyName}</li>
+              <li>Birthday: ${studentDetails.birthday}</li>
+              <li>Gender: ${studentDetails.gender}</li>
+              <li>Nationality: ${studentDetails.nationality}</li>
+              <li>Place of Birth: ${studentDetails.birthplace}</li>
+              <li>Mobile: ${studentDetails.mobile}</li>
+              <li>Alternate Number: ${studentDetails.alternateNumber}</li>
+              <li>Programme: ${studentDetails.programme}</li>
+              <li>Subject: ${studentDetails.subject}</li>
+            </ul>
+          `
+        })
+      });
+
+      if (response?.status === 200) {
+        toast.success('Form Submitted Successfully. You will be contacted soon.');
+        router.push('/thank-you');
+      } else {
+
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error('Form submitted, but there was an error sending the confirmation email. We will contact you soon.');
+    }
+    isLoading.value = false
   }
 };
 
