@@ -226,7 +226,7 @@
                 <th>EU/INT/US</th>
             </tr>
             <tr>
-                <td>Master In International Relationship(per year)</td>
+                <td>BA (Hons) Communications: Media Studies Programme(per year)</td>
                 <td>£9,250</td>
                 <td>£15,645</td>
             </tr>

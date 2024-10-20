@@ -144,7 +144,7 @@
                 <th>EU/INT/US</th>
             </tr>
             <tr>
-                <td>Master In International Relationship(per year)</td>
+                <td>MA International Relations Degree Programme(per year)</td>
                 <td>£9,450</td>
                 <td>£15,000</td>
             </tr>

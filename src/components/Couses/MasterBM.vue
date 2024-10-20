@@ -172,7 +172,7 @@
                 <th>EU/INT/US</th>
             </tr>
             <tr>
-                <td>Master In International Relationship(per year)</td>
+                <td>MSc International Business Management Programme(per year)</td>
                 <td>£11,280</td>
                 <td>£16,275</td>
             </tr>

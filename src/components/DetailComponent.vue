@@ -2,9 +2,7 @@
   <div class="flex flex-col md:flex-row h-screen bg-gray-100">
     <!-- Sidebar -->
     <div class="md:w-64 w-full md:h-auto text-white sidebar">
-      <div class="p-4 md:hidden block">
-        <h1 class="text-2xl font-bold mb-4">Company Name</h1>
-      </div>
+
       <div class="p-4 md:flex md:flex-col md:justify-start">
         <ul class="space-y-2">
           <li v-for="item in sidebarItems" :key="item.id" @click="setActiveItem(item)"

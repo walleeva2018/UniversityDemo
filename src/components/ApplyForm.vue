@@ -70,11 +70,11 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="form-group">
               <label for="mobile">Mobile Number</label>
-              <input type="tel" id="mobile" v-model="studentDetails.mobile" placeholder="+880....." required />
+              <input type="tel" id="mobile" v-model="studentDetails.mobile" required />
             </div>
             <div class="form-group">
               <label for="alternateNumber">Alternate Number</label>
-              <input type="tel" id="alternateNumber" v-model="studentDetails.alternateNumber" placeholder="+880....." />
+              <input type="tel" id="alternateNumber" v-model="studentDetails.alternateNumber" />
             </div>
           </div>
 
