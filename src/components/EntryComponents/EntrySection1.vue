@@ -12,7 +12,6 @@
       <ul class="entry-requirements-list">
         <li v-if="selectedProgram === 'bachelor'">High school diploma or equivalent</li>
         <li v-if="selectedProgram === 'bachelor'">Minimum GPA of 3.0 (on a 4.0 scale) in undergraduate studies</li>
-        <li v-if="selectedProgram === 'bachelor'">Satisfactory scores on standardized tests (e.g., SAT, ACT)</li>
         <li v-if="selectedProgram === 'bachelor'">Proficiency in English language (TOEFL, IELTS scores, or equivalent)
         </li>
         <li v-if="selectedProgram === 'bachelor'">Submission of required application materials</li>

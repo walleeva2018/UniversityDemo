@@ -7,34 +7,54 @@
         <th>Fees</th>
       </tr>
       <tr>
-        <td>Master of Science in Computer Science</td>
-        <td>2 years</td>
-        <td>$20,000 per year</td>
-      </tr>
-      <tr>
-        <td>Master of Business Administration (MBA)</td>
-        <td>18 months</td>
-        <td>$25,000 per year</td>
-      </tr>
-      <tr>
-        <td>Bachelor in CSE</td>
+        <td>BA (Hons) Communications: Advertising & Public Relations</td>
         <td>4 years</td>
-        <td>$19,0000 per year</td>
+        <td>$15,645 per year</td>
       </tr>
       <tr>
-        <td>Bachelor in EEE</td>
-        <td>3 years</td>
-        <td>$250,000 per year</td>
+        <td>BA (Hons) Business Management: Entrepreneurship Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
       </tr>
       <tr>
-        <td>Master of Business Administration (MBA)</td>
-        <td>18 months</td>
-        <td>$25,000 per year</td>
+        <td>BA (Hons) Business Management: Data Analytics programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
       </tr>
       <tr>
-        <td>Master of Commerce</td>
+        <td>BA (Hons) Business Management: Entrepreneurship Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
+      </tr>
+      <tr>
+        <td>BA (Hons) Business Management: International Business Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
+      </tr>
+      <tr>
+        <td>BSc (Hons) Computer Science Degree Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
+      </tr>
+      <tr>
+        <td>BSc (Hons) Computer Science Degree Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
+      </tr>
+      <tr>
+        <td>BA (Hons) Communications: Media Studies Programme</td>
+        <td>4 years</td>
+        <td>$15,645 per year</td>
+      </tr>
+      <tr>
+        <td>MSc International Business Management Programme</td>
         <td>2 years</td>
-        <td>$17,000 per year</td>
+        <td>$16,275 per year</td>
+      </tr>
+      <tr>
+        <td>MA International Relations Degree Programme</td>
+        <td>2 years</td>
+        <td>$15,000 per year</td>
       </tr>
     </table>
     <div class="accordion">
