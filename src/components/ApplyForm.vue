@@ -246,13 +246,13 @@ const nextStep = async () => {
   } else {
     isLoading.value = true
     try {
-      const response = await fetch('http://localhost:3000/api/send-email', {
+      const response = await fetch('https://email-server-gray.vercel.app/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: 'zubairahmedrafi37@gmail.com', // Replace with the actual recipient email
+          to: 'admin@universitypreston.com', // Replace with the actual recipient email
           subject: 'New Student Application',
           html: `
             <h1>New Student Application</h1>
