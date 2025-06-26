@@ -18,7 +18,7 @@
         For any inquiries or further information, feel free to reach out to us using the contact details
         below:
       </p>
-      <p><strong>Email:</strong> info@university.edu</p>
+      <p><strong>Email:</strong> admin@universitypreston.com</p>
       <p><strong>Phone:</strong> +123 456 7890</p>
       <p><strong>Address:</strong> Preston, Lancashire, UK PR1 5NX</p>
     </div>

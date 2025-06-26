@@ -68,6 +68,12 @@ const router = createRouter({
       name: 'courseDetails',
       component: () => import('../components/CourseDetails.vue')
     },
+    {
+      path: '/contact',
+      name: 'ContactPage',
+      component: () => import('../components/ContactPage.vue')
+    },
+
 
     { path: '/:pathMatch(.*)*', redirect: { name: 'home' } }
   ]
