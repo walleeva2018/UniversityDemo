@@ -61,6 +61,11 @@
 
       <!-- Buttons for large screens -->
       <div class="justify-between flex gap-3">
+        <button @click="gotoContactUs"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-bold right-item">
+          Contact Us
+        </button>
+
         <button @click="gotoApplyForm"
           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-bold right-item">
           Apply Now
@@ -80,15 +85,23 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 const isMenu = ref(false);
 const router = useRouter();
+
+function gotoContactUs() {
+  router.push('contact');
+}
+
 function gotoAskQuestion() {
   router.push('ask');
 }
+
 function gotoApplyForm() {
   router.push('apply');
 }
+
 function gotoEntry() {
   router.push('entry');
 }
+
 function gotoThere(dest: string) {
   router.push(dest);
 }
