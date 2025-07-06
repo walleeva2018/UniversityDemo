@@ -252,7 +252,7 @@ const nextStep = async () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: 'admin@universitypreston.com',
+          to: 'contact@universitypreston.com',
           subject: 'New Student Application',
           html: `
             <h1>New Student Application</h1>

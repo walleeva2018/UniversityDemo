@@ -9,7 +9,7 @@
         Applications are now open for the upcoming academic year. If you're interested in joining
         {{ universityName }}, please submit your application to the following email address:
       </p>
-      <a href="mailto:apply@university.edu" class="apply-email">apply@university.edu</a>
+      <a href="mailto:contact@universitypreston.com" class="apply-email">apply@university.edu</a>
     </div>
 
     <div class="contact-section">

@@ -164,7 +164,7 @@
         </ul>
         <p>Other international equivalent qualifications are accepted. We understand that not every student is in the
             same situation; if you have any questions about your qualifications, please get in touch with us at <a
-                href="mailto:admissions@richmond.ac.uk">admissions@prieston.ac.uk</a>.</p>
+                href="mailto:contact@universitypreston.com">admissions@prieston.ac.uk</a>.</p>
 
         <h2>English Language Entry Requirements</h2>
         <p>For more information on English Language Requirements for your country, visit our How to Apply webpage.</p>

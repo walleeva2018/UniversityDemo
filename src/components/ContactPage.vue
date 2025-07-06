@@ -74,7 +74,7 @@
             <div class="container mx-auto text-center">
                 <p class="text-gray-600">
                     For immediate assistance, email us at
-                    <a href="mailto:admin@universitypreston.com" class="text-primary hover:underline">
+                    <a href="mailto:contact@universitypreston.com" class="text-primary hover:underline">
                         admin@universitypreston.com
                     </a>
                 </p>
