@@ -46,11 +46,12 @@
             <a href="#">Programmes</a>
             <ul>
               <li>
-                <a @click="gotoThere('masters')">Master</a>
-              </li>
-              <li>
                 <a @click="gotoThere('bachelor')">Bachelor Degree</a>
               </li>
+              <li>
+                <a @click="gotoThere('masters')">Master</a>
+              </li>
+
               <li>
                 <a @click="gotoThere('phd')">PhD</a>
               </li>
