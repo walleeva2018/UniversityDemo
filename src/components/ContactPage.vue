@@ -146,7 +146,7 @@ const submitForm = async () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                to: 'tawhid2072@gmail.com',
+                to: 'contact@universitypreston.com',
                 subject: 'New Contact Form Submission',
                 html: `
             <h1>New Contact Form Submission</h1>
