@@ -2,7 +2,7 @@
   <header class="bg-white py-2 px-6">
     <div class="flex flex-row justify-between items-center h-full">
       <div class="flex items-center gap-4">
-        <a href="/"><img src="../assets/logo.png" width="180" height="120" /> </a>
+        <a href="/"><img src="../assets/logo.jpeg" width="180" height="120" /> </a>
       </div>
 
       <div id="wrap">

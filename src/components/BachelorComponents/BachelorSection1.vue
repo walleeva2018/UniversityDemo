@@ -61,7 +61,7 @@
       <div class="accordion-item">
         <input type="checkbox" id="accordion6" />
         <label for="accordion6" class="accordion-item-title">
-          <span class="icon"></span>BA (Hons) Business Management: International Business
+          <span class="icon"></span>Bsc(Hons) International Business and Management
         </label>
         <div class="accordion-item-desc">
           Are you interested in making an impact in the business world? Gain the knowledge and skills you need

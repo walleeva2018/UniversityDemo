@@ -1,7 +1,7 @@
 <template>
 
     <div class="section2" v-if="activeItemId === 1">
-        <h2>About the BA (Hons) Business Management: International Business Programme</h2>
+        <h2>About the Bsc(Hons) International Business and Management Programme</h2>
         <p>Are you interested in making an impact in the business world? Gain the knowledge and skills you need to
             succeed in management in an increasingly global business environment with this programme, which will take
             you from new student to future business leader.</p>
@@ -38,7 +38,7 @@
             The Chartered Institute of Management Accountants (CIMA), the world’s largest professional body of
             management accountants, entering into their Operational Level.</p>
 
-        <h3>Why Study BA (Hons) Business Management: International Business?</h3>
+        <h3>Why Study Bsc(Hons) International Business and Management?</h3>
         <ul>
             <li>Learn within the flexible Liberal Arts framework. Choose your own path – find out more about the Liberal
                 Arts.</li>
@@ -197,7 +197,7 @@
                 <th>EU/INT/US</th>
             </tr>
             <tr>
-                <td>BA (Hons) Business Management: International Business Programme(per year)</td>
+                <td>Bsc(Hons) International Business and Management Programme(per year)</td>
                 <td>£9,250</td>
                 <td>£15,645</td>
             </tr>

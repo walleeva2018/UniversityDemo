@@ -67,14 +67,17 @@ const router = useRouter();
 /* Add gap between cards and align them in the middle */
 .cards-container {
   display: flex;
-  gap: 2rem; /* Adjust the gap between cards */
-  justify-content: center; /* Align cards in the middle horizontally */
-  align-items: center; /* Align cards in the middle vertically */
-  margin-top: 2rem; /* Adjust top margin */
-  margin-bottom: 2rem; /* Adjust bottom margin */
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 1400px;
 }
 
 .card-item {
+  flex: 1;
+  min-width: 0;
   max-width: 25rem;
 }
 
@@ -85,27 +88,26 @@ const router = useRouter();
 
 /* Add arrow icon style */
 .p-button-icon {
-  color: inherit; /* Set the default color */
-  border-radius: 50%; /* Make the icon rounded */
-  background-color: transparent; /* Set the default background color */
-  padding: 8px; /* Adjust padding to make the icon larger */
+  color: inherit;
+  border-radius: 50%;
+  background-color: transparent;
+  padding: 8px;
 }
 .p-button-icon:hover {
-  background-color: rgb(33, 112, 231); /* Change background color on hover */
-  color: white; /* Change text color on hover */
+  background-color: rgb(33, 112, 231);
+  color: white;
 }
 
 /* Media query for small screens */
 @media (max-width: 1200px) {
   .cards-container {
-    flex-direction: column; /* Stack cards vertically on smaller screens */
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
-}
-@media (min-width: 1200px) {
-  .cards-container {
-    margin-left: 18rem;
-    margin-right: 10rem;
+
+  .card-item {
+    width: 100%;
+    max-width: 500px;
   }
 }
 </style>

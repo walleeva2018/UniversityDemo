@@ -27,7 +27,7 @@
         <td>$15,645 per year</td>
       </tr>
       <tr>
-        <td>BA (Hons) Business Management: International Business Programme</td>
+        <td>Bsc(Hons) International Business and Management Programme</td>
         <td>4 years</td>
         <td>$15,645 per year</td>
       </tr>
